@@ -114,8 +114,7 @@
         const nota = melodia.extrae(); // saca nota de la melodía
         const res = keys.find((k) => k.nota == nota);
         //  console.log("pos nota:"+ res.posicion);
-        pizzarra.agrega(res.posicion);
-
+         
         musicBox.play(nota);
 
         validation = musicBox.notes();
@@ -150,7 +149,6 @@
         PERSONA: 2,
       };
 
-      let musicBox = new MusicBox();
       let melodia = new Melodia();
 
       let playing = true;
@@ -209,14 +207,16 @@
               return;
             }
 
-            pizzarra.inix();
+            pizzarra.ini();
 
             setTimeout(function () {
               const nota = melodia.extrae(); // saca nota de la melodía
               musicBox.play(nota);
-              const res = keys.find((k) => k.nota == nota);
+              const resNota = keys.find((k) => k.nota == nota);
               // console.log("pos nota:"+ res.posicion);
-              pizzarra.agrega(res.posicion);
+            
+            //  pizzarra.agrega(resNota.posicion);
+            
               validation = musicBox.notes();
               validationLen = validation.length;
             }, 1000);
@@ -232,7 +232,7 @@
     En turno:
     <div id="etiqueta"></div>
 
-    <button onclick="{ iniGame()}">Partamos</button>
+    <button onclick="{ iniGame(); }">Partamos</button>
 
     <canvas id="miCanvas" width="900" height="200"></canvas>
     mi canvas?
@@ -260,6 +260,7 @@
       // Obtener el elemento canvas y su contexto 2D
       pizzarra = new Pizzarra("miCanvas");
 
+      let musicBox = new MusicBox();
    
     </script>
   </body>

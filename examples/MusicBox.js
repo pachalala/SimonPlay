@@ -30,7 +30,7 @@ class MusicBox {
 
         setTimeout(function () {
           window.playNote(keys.find((k) => k.nota == n).midi);
-
+          pizzarra.agrega(keys.find((k) => k.nota == n).posicion);
           if (index === repite.length - 1) {
             playing = false;
             humano = true;
