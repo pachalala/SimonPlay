@@ -20,7 +20,7 @@
       src="../js/util/dom_request_script.js"
       type="text/javascript"
     ></script>
-    
+
     <script src="MusicBox.js" type="text/javascript"></script>
     <script src="Teclado.js" type="text/javascript"></script>
 
@@ -28,32 +28,7 @@
 
     <title>Detección de Teclas</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
-
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
-
     <style>
-
-
-
-body, button {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 10px;
-}
-
-      button {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #ccc;
-       
-        cursor: pointer;
-      }
-
-      button.active {
-        background-color: #f00;
-        color: #fff;
-      }
-
       #piano {
         display: flex;
         align-items: center;
@@ -125,16 +100,11 @@ body, button {
         }
       }
 
-      function resetGame(creaNuevo) {
+      function resetGame() {
 
         console.log("en restgame()");
 
-        if (creaNuevo)  
-
-         melodia.generaNuevaMelodia();
-        else 
-         melodia.reset();
-
+        melodia.reset();
         musicBox.clear();
         let playing = true;
         let humano = false;
@@ -295,30 +265,28 @@ body, button {
     </script>
   </head>
   <body>
-    <h1>Simon manda musical</h1>
+    <h1>Detectar presiones de teclas en la página</h1>
     <p>Presiona cualquier tecla y mira la consola.</p>
 
-    <table border=1>
+    <table>
       <tr>
-           <td  id="colorChange" data-color="red">  <!--cambiar color aqui-->  
+           <td>    En turno:
+
             <div id="etiqueta"></div>
         </td>
       </tr>
 
       <tr>
-        <td rowspan="3" valign="top">
-          <button onclick="{resetGame(); iniGame(); }">Presiona aquí para comenzar</button><br/>
-          <button onclick="{resetGame(true); iniGame(); }">Presiona aquí para crear otra melodía</button><br/>
-          <button id="holi" >Muestra en pentagrama</button>
-
-        </td>
+        <td>
+          <button onclick="{resetGame(); iniGame(); }">Partamos</button>
+      </td>
    </tr>
    <tr>
-    <td><canvas style="text-align: left;" id="miCanvas" width="900" height="200"></canvas>
+    <td>  <canvas id="miCanvas" width="900" height="200"></canvas>
     </td>
 </tr>
 <tr>
-  <td align="center">
+  <td>
     <div id="piano">
     <div data-key="q" class="key white"></div>
     <div data-key="2" class="key black"></div>
@@ -348,13 +316,6 @@ body, button {
     
     
     <script> 
-
-
-    const button = document.getElementById('holi');
-
-    button.addEventListener('click', function() {
-      button.classList.toggle('active');
-    });
 
       const fkeys = document.querySelectorAll('.key');
           fkeys.forEach((key) => {

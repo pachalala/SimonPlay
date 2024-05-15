@@ -60,6 +60,12 @@ class MusicBox {
 
     }
 
+
+    generaNuevaMelodia(){
+      this.notas =  this.generaMelodia();// ["C3", "D3", "E3", "F3"];
+      this.original = this.notas.slice(); // copy notes
+      }
+
      generaMelodia(){
 
       const escala = ['C3', 'D3', 'E3', 'F3', 'G3', 'A3', 'B3', 'C4', 'D4', 'E4'];
