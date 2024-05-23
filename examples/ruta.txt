@@ -31,4 +31,8 @@
 -- secuencia melodia en la partitura
 -- logica monito mayor 
 -- generacion aleatoria melodias
+-- pizarra
+
+
+-- texto de animo para continuar jugando 
 

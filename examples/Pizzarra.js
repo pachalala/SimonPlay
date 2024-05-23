@@ -6,7 +6,7 @@ class Pizzarra {
   startX = 50; // Posición inicial en X
   startY = 50; // Posición inicial en Y
   lineSpacing = 20; // Espacio entre líneas
-  lineWidth = 600; // Ancho del pentagrama
+  lineWidth = 1200; // Ancho del pentagrama
   lineHeight = 2; // Grosor de las líneas
 
   ctx = null;
@@ -20,7 +20,7 @@ class Pizzarra {
     this.startX = 50;
     this.startY = 50;
     this.lineSpacing = 20;
-    this.lineWidth = 600;
+    this.lineWidth = 900;
     this.lineHeight = 2;
     this.indice = 0;
     this.notas = [];

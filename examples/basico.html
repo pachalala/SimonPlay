@@ -108,6 +108,34 @@ body, button {
         etiqueta.innerText = texto;
       }
 
+      const frases = [
+      "¡Lo estás haciendo genial!",
+      "¡Sigue así, no te rindas!",
+      "¡Eres increíble!",
+      "¡Cada vez estás más cerca de la meta!",
+      "¡Tienes todo lo necesario para triunfar!",
+      "¡La práctica te está llevando a la perfección!",
+      "¡Tu esfuerzo está dando frutos!",
+      "¡Confía en ti mismo!",
+      "¡Estás superando todas las expectativas!",
+      "¡Eres un verdadero campeón!"
+    ];
+
+    let frasesRestantes = [...frases];
+
+    function mostrarFrase() {
+      if (frasesRestantes.length === 0) {
+        frasesRestantes = [...frases];  // Reinicia las frases cuando se hayan mostrado todas
+         
+      }
+
+      const indiceAleatorio = Math.floor(Math.random() * frasesRestantes.length);
+      const frase = frasesRestantes[indiceAleatorio];
+      write (frase);
+
+      frasesRestantes.splice(indiceAleatorio, 1);  // Elimina la frase mostrada de las frases restantes
+    }
+
       function cambiarTurno() {
         if (turno === turnos.PC) {
           write("TURNO PERSONA");
@@ -125,6 +153,12 @@ body, button {
         }
       }
 
+     function  instrucciones(){
+
+        write("Debes estar atento a las notas que aparecen y presionar la tecla (por mouse o teclado)\n\r que corresponda a la nota aparecida en el pentagrama. Si te equivocas puedes comenzar nuevamente\n\r o si prefieres puedes cambiar la melodía.");
+
+      }
+
       function resetGame(creaNuevo) {
 
         console.log("en restgame()");
@@ -139,8 +173,8 @@ body, button {
         let playing = true;
         let humano = false;
         let turno = turnos.PC;
-        let validation = [];
-        let validationLen = 0;
+        validation = [];
+        validationLen = 0;
         
         pizzarra.ini();
       }
@@ -149,7 +183,7 @@ body, button {
         const nota = melodia.extrae(); // saca nota de la melodía
         const res = keys.find((k) => k.nota == nota);
         //  console.log("pos nota:"+ res.posicion);
-         
+        write ('COMENCEMOS!') 
         musicBox.play(nota);
 
         validation = musicBox.notes();
@@ -231,7 +265,7 @@ body, button {
           const pop = validation.shift(); // compara las notas desde el principio
           console.log("comparacion: key: " + res.nota + ", pop: " + pop);
 
-          if (res.nota == pop) write("CORRECTO");
+          if (res.nota == pop)  write("CORRECTO");
           else {
             write("INCORRECTO - partamos de nuevo");
             resetGame();
@@ -249,7 +283,7 @@ body, button {
             }
 
             pizzarra.ini();
-
+            mostrarFrase() ;
             setTimeout(function () {
               const nota = melodia.extrae(); // saca nota de la melodía
               musicBox.play(nota);
@@ -300,21 +334,28 @@ body, button {
 
     <table border=1>
       <tr>
-           <td  id="colorChange" data-color="red">  <!--cambiar color aqui-->  
-            <div id="etiqueta"></div>
+           <td  >  <!--cambiar color aqui-->  
+            
         </td>
+        <td  id="colorChange" data-color="red">  <!--cambiar color aqui-->  
+          <div id="etiqueta" style="text-align: left; height: 50px; "></div>
+      </td>
+
+
       </tr>
 
       <tr>
         <td rowspan="3" valign="top">
-          <button onclick="{resetGame(); iniGame(); }">Presiona aquí para comenzar</button><br/>
-          <button onclick="{resetGame(true); iniGame(); }">Presiona aquí para crear otra melodía</button><br/>
+          <button onclick=" instrucciones();   ">Instrucciones</button><br/>
+        
+          <button onclick="{resetGame(); iniGame(); }">Comencemos!</button><br/>
+          <button onclick="{resetGame(true); iniGame(); }">Crea otra melodía</button><br/>
           <button id="holi" >Muestra en pentagrama</button>
 
         </td>
    </tr>
    <tr>
-    <td><canvas style="text-align: left;" id="miCanvas" width="900" height="200"></canvas>
+    <td><canvas style="text-align: left;" id="miCanvas" width="1000" height="200"></canvas>
     </td>
 </tr>
 <tr>
