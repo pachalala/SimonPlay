@@ -107,34 +107,48 @@ body, button {
         const etiqueta = document.getElementById("etiqueta");
         etiqueta.innerText = texto;
       }
+      let idioma = 'es';
+      const frases =   {
+        es: [
+          "¡Lo estás haciendo genial!",
+          "¡Sigue así, no te rindas!",
+          "¡Eres increíble!",
+          "¡Cada vez estás más cerca de la meta!",
+          "¡Tienes todo lo necesario para triunfar!",
+          "¡La práctica te está llevando a la perfección!",
+          "¡Tu esfuerzo está dando frutos!",
+          "¡Confía en ti mismo!",
+          "¡Estás superando todas las expectativas!",
+          "¡Eres un verdadero campeón!"
+        ],
+        en: [
+          "You're doing great!",
+          "Keep it up, don't give up!",
+          "You are amazing!",
+          "You are getting closer to your goal!",
+          "You have everything you need to succeed!",
+          "Practice is leading you to perfection!",
+          "Your effort is paying off!",
+          "Believe in yourself!",
+          "You are exceeding all expectations!",
+          "You are a true champion!"
+        ]
+     }
+    ;
 
-      const frases = [
-      "¡Lo estás haciendo genial!",
-      "¡Sigue así, no te rindas!",
-      "¡Eres increíble!",
-      "¡Cada vez estás más cerca de la meta!",
-      "¡Tienes todo lo necesario para triunfar!",
-      "¡La práctica te está llevando a la perfección!",
-      "¡Tu esfuerzo está dando frutos!",
-      "¡Confía en ti mismo!",
-      "¡Estás superando todas las expectativas!",
-      "¡Eres un verdadero campeón!"
-    ];
-
-    let frasesRestantes = [...frases];
+    let frasesRestantes = [...frases[idioma]];
 
     function mostrarFrase() {
-      if (frasesRestantes.length === 0) {
-        frasesRestantes = [...frases];  // Reinicia las frases cuando se hayan mostrado todas
-         
+        if (frasesRestantes.length === 0) {
+          frasesRestantes = [...frases[idioma]]; // Reinicia las frases cuando se hayan mostrado todas
+        }
+
+        const indiceAleatorio = Math.floor(Math.random() * frasesRestantes.length);
+        const frase = frasesRestantes[indiceAleatorio];
+        write(frase);
+
+        frasesRestantes.splice(indiceAleatorio, 1); // Elimina la frase mostrada de las frases restantes
       }
-
-      const indiceAleatorio = Math.floor(Math.random() * frasesRestantes.length);
-      const frase = frasesRestantes[indiceAleatorio];
-      write (frase);
-
-      frasesRestantes.splice(indiceAleatorio, 1);  // Elimina la frase mostrada de las frases restantes
-    }
 
       function cambiarTurno() {
         if (turno === turnos.PC) {
@@ -155,9 +169,19 @@ body, button {
 
      function  instrucciones(){
 
-        write("Debes estar atento a las notas que aparecen y presionar la tecla (por mouse o teclado)\n\r que corresponda a la nota aparecida en el pentagrama. Si te equivocas puedes comenzar nuevamente\n\r o si prefieres puedes cambiar la melodía.");
-
+      write(
+          idioma === 'es'
+            ? "Debes estar atento a las notas que aparecen y presionar la tecla (por mouse o teclado)\n\r que corresponda a la nota aparecida en el pentagrama. Si te equivocas puedes comenzar nuevamente\n\r o si prefieres puedes cambiar la melodía."
+            : "You must pay attention to the notes that appear and press the key (by mouse or keyboard)\n\r that corresponds to the note that appears on the staff. If you make a mistake, you can start over\n\r or if you prefer, you can change the melody."
+        );
       }
+       
+
+      function cambiarIdioma() {
+        idioma = idioma === 'es' ? 'en' : 'es';
+        actualizarTexto();
+      }
+
 
       function resetGame(creaNuevo) {
 
@@ -362,21 +386,21 @@ body, button {
   <td align="center">
     <div id="piano">
     <div data-key="q" class="key white"></div>
-    <div data-key="2" class="key black"></div>
+    <div data-key="2" class="  black"></div>
     <div data-key="w" class="key white"></div>
-    <div data-key="3" class="key black"></div>
+    <div data-key="3" class="  black"></div>
     <div data-key="e" class="key white"></div>
     <div data-key="r" class="key white"></div>
-    <div data-key="5" class="key black"></div>
+    <div data-key="5" class="  black"></div>
     <div data-key="t" class="key white"></div>
-    <div data-key="6" class="key black"></div>
+    <div data-key="6" class="  black"></div>
     <div data-key="y" class="key white"></div>
-    <div data-key="7" class="key black"></div>
+    <div data-key="7" class="  black"></div>
     <div data-key="u" class="key white"></div>
     <div data-key="i" class="key white"></div>
-    <div data-key="9" class="key black"></div>
+    <div data-key="9" class="  black"></div>
     <div data-key="o" class="key white"></div>
-    <div data-key="0" class="key black"></div>
+    <div data-key="0" class="  black"></div>
     <div data-key="p" class="key white"></div>
   </div>
 

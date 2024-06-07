@@ -32,7 +32,5 @@
 -- logica monito mayor 
 -- generacion aleatoria melodias
 -- pizarra
-
-
 -- texto de animo para continuar jugando 
-
+-- cambio texto por idioma (GPT)
