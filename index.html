@@ -104,7 +104,45 @@ body, button {
         const etiqueta = document.getElementById("etiqueta");
         etiqueta.innerText = texto;
       }
-      let idioma = 'es';
+
+      let idioma = 'en';
+
+      translations = {
+     
+          
+         
+        
+        en: {
+            instruct: "You must pay attention to the notes that appear and press the key (by mouse or keyboard)\n\r that corresponds to the note that appears on the staff. If you make a mistake, you can start over\n\r or if you prefer, you can change the melody.",
+            farewell: "Goodbye",
+            welcomeMessage: "Let's Start!",
+            btn_instrucciones: "Instructions",
+            btn_comencemos: "Let's Start!",
+            btn_otra_Melodia: "Another Melody",
+            btn_idioma:"Español"
+        },
+
+        es: {
+          instruct: "Debes estar atento a las notas que aparecen y presionar la tecla (por mouse o teclado)\n\r que corresponda a la nota aparecida en el pentagrama. Si te equivocas puedes comenzar nuevamente\n\r o si prefieres puedes cambiar la melodía.",
+          welcomeMessage: "Comenzemos!",
+          btn_instrucciones:"Instrucciones",
+          btn_comencemos: "Comenzemos!",
+          btn_otra_Melodia :"Otra melodia",
+          btn_idioma:"English"
+        }
+      
+      };
+
+
+
+      function translate(key ) {
+
+        console.log("en translate: "+key);
+
+         return translations[idioma][key] || key;
+      }
+
+
       const frases =   {
         es: [
           "¡Lo estás haciendo genial!",
@@ -166,17 +204,29 @@ body, button {
 
      function  instrucciones(){
 
-      write(
-          idioma === 'es'
-            ? "Debes estar atento a las notas que aparecen y presionar la tecla (por mouse o teclado)\n\r que corresponda a la nota aparecida en el pentagrama. Si te equivocas puedes comenzar nuevamente\n\r o si prefieres puedes cambiar la melodía."
-            : "You must pay attention to the notes that appear and press the key (by mouse or keyboard)\n\r that corresponds to the note that appears on the staff. If you make a mistake, you can start over\n\r or if you prefer, you can change the melody."
-        );
+      write( translate('instruct'))  ;
       }
        
 
       function cambiarIdioma() {
         idioma = idioma === 'es' ? 'en' : 'es';
         actualizarTexto();
+      }
+
+
+      function actualizarTexto(){
+ 
+        const btn_instrucciones = document.getElementById('btn_instrucciones');
+        const btn_comencemos = document.getElementById('btn_comencemos');
+        const btn_otra_Melodia = document.getElementById('btn_otra_Melodia');
+        const btn_idioma = document.getElementById('btn_idioma');
+
+        btn_instrucciones.textContent = translate('btn_instrucciones');
+        btn_comencemos.textContent = translate('btn_comencemos');
+        btn_otra_Melodia.textContent = translate('btn_otra_Melodia');
+        btn_idioma.textContent = translate('btn_idioma');
+
+        
       }
 
 
@@ -204,7 +254,7 @@ body, button {
         const nota = melodia.extrae(); // saca nota de la melodía
         const res = keys.find((k) => k.nota == nota);
         //  console.log("pos nota:"+ res.posicion);
-        write ('COMENCEMOS!') 
+        write (translate('welcomeMessage')); 
         musicBox.play(nota);
 
         validation = musicBox.notes();
@@ -246,6 +296,7 @@ body, button {
       let turno = turnos.PC;
       let validation = []; // la secuencia actual de la melodia
       let validationLen = 0;
+     
     </script>
 
     <script>
@@ -350,16 +401,17 @@ body, button {
     </script>
   </head>
   <body>
-    <h1>Simon manda musical</h1>
-    <p>Presiona cualquier tecla y mira la consola.</p>
-
-    <table border=1>
+    <div style="text-align: center;">
+      <h1>Simon Play </h1>
+      <p>Press any key</p>
+    </div>
+    <table border=0>
       <tr>
            <td  >  <!--cambiar color aqui-->  
             
         </td>
         <td  id="colorChange" data-color="red">  <!--cambiar color aqui-->  
-          <div id="etiqueta" style="text-align: left; height: 50px; "></div>
+          <div id="etiqueta" style="text-align: justify; height: 50px; display: flex; align-items: center; margin-left: 50px; "></div>
       </td>
 
 
@@ -367,11 +419,10 @@ body, button {
 
       <tr>
         <td rowspan="3" valign="top">
-          <button onclick=" instrucciones();   ">Instrucciones</button><br/>
-        
-          <button onclick="{resetGame(); iniGame(); }">Comencemos!</button><br/>
-          <button onclick="{resetGame(true); iniGame(); }">Crea otra melodía</button><br/>
-          <button id="holi" >Muestra en pentagrama</button>
+          <button style="width: 400px;" id="btn_instrucciones"  onclick=" instrucciones();   ">Instrucciones</button><br/>
+          <button style="width: 400px;" id="btn_comencemos"  onclick="{resetGame(); iniGame(); }">Comencemos!</button><br/>
+          <button style="width: 400px;" id="btn_otra_Melodia"  onclick="{resetGame(true); iniGame(); }">Crea otra melodía</button><br/>
+          <button style="width: 400px;" id="btn_idioma" onclick="{ cambiarIdioma(); }" >Español</button>
 
         </td>
    </tr>
@@ -418,11 +469,11 @@ body, button {
     <script> 
 
 
-    const button = document.getElementById('holi');
+      const button = document.getElementById('btn_idioma');
 
-    button.addEventListener('click', function() {
-      button.classList.toggle('active');
-    });
+      button.addEventListener('click', function() {
+      //  button.classList.toggle('active');
+      });
 
       const fkeys = document.querySelectorAll('.key');
           fkeys.forEach((key) => {
@@ -436,9 +487,10 @@ body, button {
 
 
       pizzarra = new Pizzarra("miCanvas");
-
       let musicBox = new MusicBox();
-   
+
+      actualizarTexto();
+     
     </script>
   </body>
 </html>
