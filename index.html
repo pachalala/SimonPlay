@@ -108,13 +108,11 @@ body, button {
       let idioma = 'en';
 
       translations = {
-     
           
-         
-        
         en: {
             instruct: "You must pay attention to the notes that appear and press the key (by mouse or keyboard)\n\r that corresponds to the note that appears on the staff. If you make a mistake, you can start over\n\r or if you prefer, you can change the melody.",
             farewell: "Goodbye",
+            welcome: "Welcome! This application is designed to help you learn to read sheet music along with a piano. You can press the instructions button for more information",
             welcomeMessage: "Let's Start!",
             btn_instrucciones: "Instructions",
             btn_comencemos: "Let's Start!",
@@ -125,6 +123,7 @@ body, button {
         es: {
           instruct: "Debes estar atento a las notas que aparecen y presionar la tecla (por mouse o teclado)\n\r que corresponda a la nota aparecida en el pentagrama. Si te equivocas puedes comenzar nuevamente\n\r o si prefieres puedes cambiar la melodía.",
           welcomeMessage: "Comenzemos!",
+          welcome: "¡Bienvenido! Esta aplicación está diseñada para ayudarte a aprender a leer partituras junto con un piano. Puedes presionar el botón de instrucciones para más información.",
           btn_instrucciones:"Instrucciones",
           btn_comencemos: "Comenzemos!",
           btn_otra_Melodia :"Otra melodia",
@@ -136,10 +135,8 @@ body, button {
 
 
       function translate(key ) {
-
         console.log("en translate: "+key);
-
-         return translations[idioma][key] || key;
+        return translations[idioma][key] || key;
       }
 
 
@@ -490,7 +487,7 @@ body, button {
       let musicBox = new MusicBox();
 
       actualizarTexto();
-     
+      write( translate('welcome'))  ;
     </script>
   </body>
 </html>
