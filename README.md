@@ -6,8 +6,8 @@ It is an educational coding project inspired by Simon Says. Its goal is to learn
 
 
 
-## Using MIDI.js  (Sound Fonts)
-* [MIDI.js] https://github.com/mudcube/MIDI.js
+
+* [using MIDI.js for Sound Fonts]https://github.com/mudcube/MIDI.js
  
  
 
