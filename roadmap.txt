@@ -1,36 +1,24 @@
--- prueba sonigo midi                           x
--- teclado
-        -- despliegue                           x
-        -- teclas listener                      x
-        -- estructura sonido                    x
-        -- que suene                            x
-        -- que anime la tecla al presionar      x
+ 
+-- Sound bank test 
+-- Keyboard
+-- Piano layout
+-- Keyboard action 
+-- Keyboard json structure
+-- key animation
 
-9 --x------------------------
-8         x
-7 -----x----------------------
-6              x
-5 ---------------------------
-4                   x
-3 ----------------------x----
-2   x
-1   -x-
+ 
 
--- partitura
--- notas por la partitura
-                          - a partir de nota, saber la posicion en la partitura     
-                          - funcion argega nota
-                                                - tengo un tiempo (tick) progresivo             x           
-                                                - agrego posicion de la nota 
+-- Pentagram (Canvas Class)
+ 
+-- Melody (musicBox Class) 
+-- Turn logic 
+-- Random melody
+-- Mouse (click) action
+-- Encouraging message  
+-- Toogle language
 
--- melodia
-                          - funcion agrega melodia a partitura                                  x 
-                          - pop nota,agregarla a partitura, tocarla , toca teclado.             x
-                          - sona secuencia acumulada                                            x
-                          - toca la melodia completa sale felicitaciones     
--- secuencia melodia en la partitura
--- logica monito mayor 
--- generacion aleatoria melodias
--- pizarra
--- texto de animo para continuar jugando 
--- cambio texto por idioma (GPT)
+-------------------------
+
+Future
+-- Easy mode - show note in pentragram (after pressing key) 
+
